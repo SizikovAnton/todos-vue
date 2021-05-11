@@ -1,0 +1,93 @@
+// TODO Вынести анимацию в миксин
+//Типографика
+$font: "Segoe UI", sans-serif;
+
+@mixin font-regular {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@mixin font-bold {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+//Элементы формы
+@mixin form-item_theme_default {
+  padding: $space-xs;
+
+  border: 1px solid $clr-border-default;
+  border-radius: $border-radius;
+  outline: none;
+
+  &:hover {
+    border-color: $clr-border-default-hover;
+  }
+
+  &:focus {
+    border-color: $clr-border-default-focus;
+  }
+
+  &::placeholder {
+    color: $clr-placeholder-default;
+  }
+}
+
+//Цветовая палитра
+$clr-text-default: #002033;
+$clr-text-white: #fafafa;
+
+$clr-alert: #ff4443;
+$clr-success: #24c38e;
+
+$clr-bg-primary: #0078d2;
+$clr-bg-primary-hover: #0091ff;
+
+$clr-modal-paranja: rgba(0, 32, 51, 0.85);
+
+$clr-border-default: rgba(0, 66, 105, 0.28);
+$clr-border-default-hover: rgba(0, 66, 105, 0.52);
+$clr-border-default-focus: #0091ff;
+$clr-placeholder-default: rgba(0, 32, 51, 0.35);
+
+//Размеры
+$wrap-xs: 360px;
+$wrap-s: 640px;
+$wrap-m: 1024px;
+$wrap-l: 1280px;
+
+$border-radius: 4px;
+
+//Отступы
+$space-xs: 8px;
+$space-s: 12px;
+$space-m: 16px;
+$space-l: 20px;
+
+//Медиа запросы
+@mixin _media-query($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @include _media-query($wrap-xs) {
+    @content;
+  }
+}
+@mixin media-s {
+  @include _media-query($wrap-s) {
+    @content;
+  }
+}
+@mixin media-m {
+  @include _media-query($wrap-m) {
+    @content;
+  }
+}
+@mixin media-l {
+  @include _media-query($wrap-l) {
+    @content;
+  }
+}
