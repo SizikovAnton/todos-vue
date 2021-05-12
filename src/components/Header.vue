@@ -4,13 +4,13 @@
     <BasicSelect
       class="header__item"
       :selects="completedSelects"
-      :value="'all'"
+      :value="filterComletedValue"
       @input="inputCompletedSelects"
     />
     <BasicSelect
       class="header__item"
       :selects="prioritiesSelects"
-      :value="'all'"
+      :value="filterPriorityValue"
       @input="inputPrioritiesSelects"
     />
   </header>
@@ -34,6 +34,8 @@ export default {
   },
   props: {
     priorityList: Array,
+    filterComletedValue: String,
+    filterPriorityValue: String,
   },
   computed: {
     ...mapGetters(["getPriorities"]),

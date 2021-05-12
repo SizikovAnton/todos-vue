@@ -1,5 +1,6 @@
 <template>
   <router-link tag="div" :to="'/todo/' + todo.id" class="todoItem">
+    <!-- Исправить router-link tag -->
     <header class="todoItem__header">
       <div
         :class="[
@@ -17,16 +18,17 @@
         :class="{ todoItem__completed_check: todo.completed }"
         @click.native.stop="сompletedTodo(todo.id)"
       >
-        <icon-base>
-          <icon-close v-if="todo.completed" />
-          <icon-check v-else />
-        </icon-base>
+        <!-- FIXME Исправить на pascalecase -->
+        <IconBase>
+          <IconClose v-if="todo.completed" />
+          <IconCheck v-else />
+        </IconBase>
       </BasicButton>
       <BasicButton
         class="todoItem__delete button_view_secondary button_icon"
         @click.native.stop="removeTodo(todo.id)"
       >
-        <icon-base><icon-trash /></icon-base>
+        <IconBase><icon-trash /></IconBase>
       </BasicButton>
     </header>
     <hr />

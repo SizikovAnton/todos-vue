@@ -1,6 +1,8 @@
 <template>
   <div class="content">
     <Header
+      :filterComletedValue="filterComletedValue"
+      :filterPriorityValue="filterPriorityValue"
       @input-completed-selects="inputCompletedSelects"
       @input-priorities-selects="inputPrioritiesSelects"
     />
@@ -33,9 +35,29 @@ export default {
   methods: {
     inputCompletedSelects(value) {
       this.filterComletedValue = value;
+      // TODO Убрать значение из строки запроса когда 'all'
+      // FIXME Исправить NavigationDuplicated
+      if (this.filterComletedValue !== this.$route.query.filterComletedValue) {
+        this.$router.replace({
+          name: "home",
+          query: {
+            ...this.$route.query,
+            filterComletedValue: this.filterComletedValue,
+          },
+        });
+      }
     },
     inputPrioritiesSelects(value) {
       this.filterPriorityValue = value;
+      if (this.filterPriorityValue !== this.$route.query.filterPriorityValue) {
+        this.$router.replace({
+          name: "home",
+          query: {
+            ...this.$route.query,
+            filterPriorityValue: this.filterPriorityValue,
+          },
+        });
+      }
     },
   },
   computed: {
@@ -57,6 +79,14 @@ export default {
         return todos;
       }
     },
+  },
+  created() {
+    if (this.$route.query.filterComletedValue) {
+      this.filterComletedValue = this.$route.query.filterComletedValue;
+    }
+    if (this.$route.query.filterPriorityValue) {
+      this.filterPriorityValue = this.$route.query.filterPriorityValue;
+    }
   },
   components: {
     TodoList,
