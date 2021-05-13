@@ -43,8 +43,8 @@ export default {
     ],
   },
   actions: {
-    сompletedTodo({ commit }, id) {
-      commit("сompletedTodo", id);
+    completeTodo({ commit }, id) {
+      commit("completeTodo", id);
     },
     addTodo({ commit, state }, todo) {
       todo.id = state.todos.length
@@ -60,7 +60,7 @@ export default {
     },
   },
   mutations: {
-    сompletedTodo(state, id) {
+    completeTodo(state, id) {
       // Можно ли в мутациях использовать геттеры?
       const todo = state.todos.find((item) => item.id === id);
       todo.completed = !todo.completed;

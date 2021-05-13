@@ -25,6 +25,7 @@ import Header from "@/components/Header";
 import { mapGetters } from "vuex";
 
 export default {
+  // TODO Вынести фмльтры в отдельный компонент
   name: "Home",
   data() {
     return {
@@ -36,7 +37,6 @@ export default {
     inputCompletedSelects(value) {
       this.filterComletedValue = value;
       // TODO Убрать значение из строки запроса когда 'all'
-      // FIXME Исправить NavigationDuplicated
       if (this.filterComletedValue !== this.$route.query.filterComletedValue) {
         this.$router.replace({
           name: "home",

@@ -16,9 +16,8 @@
       <BasicButton
         class="todoItem__completed button_view_secondary button_icon"
         :class="{ todoItem__completed_check: todo.completed }"
-        @click.native.stop="сompletedTodo(todo.id)"
+        @click.native.stop="completeTodo(todo.id)"
       >
-        <!-- FIXME Исправить на pascalecase -->
         <IconBase>
           <IconClose v-if="todo.completed" />
           <IconCheck v-else />
@@ -68,9 +67,10 @@ export default {
     Badge,
   },
   methods: {
-    ...mapActions(["сompletedTodo", "removeTodo"]),
+    ...mapActions(["completeTodo", "removeTodo"]),
   },
   computed: {
+    // TODO Переделать через классы
     statusStyle: function () {
       if (this.todo.completed) {
         return {
